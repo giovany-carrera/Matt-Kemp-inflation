@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <style>
+    #matt-kemp {
+      width: 200px;
+      height: auto;
+      transition: width 0.3s;
+    }
+    .controls {
+      margin-top: 1em;
+    }
+    .controls button {
+      margin-right: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <img id="matt-kemp" src="7e7c9f53_br_lad.jpg" alt="Matt Kemp">
+
+  <div class="controls">
+    <button id="inflation">Inflation</button>
+    <button id="deflation">Deflation</button>
+    <button id="reset">Pop Him</button>
+  </div>
+
+  <script>
+    const img = document.getElementById("matt-kemp");
+    const inflation = document.getElementById("inflation");
+    const deflation = document.getElementById("deflation");
+    const reset = document.getElementById("reset");
+
+    const ORIGINAL_WIDTH = 200;
+    const STEP = 20;
+
+    function setWidth(width) {
+      img.style.width = width + "px";
+    }
+
+    inflation.addEventListener("click", () => {
+      const current = img.clientWidth;
+      setWidth(current + STEP);
+    });
+
+    deflation.addEventListener("click", () => {
+      const current = img.clientWidth;
+      setWidth(Math.max(50, current - STEP));
+    });
+
+    reset.addEventListener("click", () => {
+      setWidth(ORIGINAL_WIDTH);
+    });
+  </script>
+</body>
+<footer style="align-items: center;">
+  ©foot finder
+</footer>
+</html>
